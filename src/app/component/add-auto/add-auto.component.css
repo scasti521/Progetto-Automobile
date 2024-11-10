@@ -1,0 +1,13 @@
+.container {
+  max-width: 600px;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}

@@ -1,0 +1,34 @@
+<div class="card h-100">
+  <div class="card-body">
+    <div [ngSwitch]="automobile.marca.toLowerCase()" class="card-logo">
+      <img *ngSwitchCase="'fiat'" src="https://www.brandforum.it/wp-content/uploads/2019/03/40820191021015937.jpg" alt="Fiat logo" class="card-logo mb-3">
+      <img *ngSwitchCase="'opel'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Opel_Logo_2021.svg/800px-Opel_Logo_2021.svg.png" alt="Opel logo" class="card-logo mb-3">
+      <img *ngSwitchCase="'volkswagen'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Volkswagen_logo_2019.svg/2048px-Volkswagen_logo_2019.svg.png" alt="Volkswagen logo" class="card-logo mb-3">
+      <img *ngSwitchCase="'bmw'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/BMW.svg/600px-BMW.svg.png" alt="BMW logo" class="card-logo mb-3">
+      <img *ngSwitchCase="'toyota'" src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Toyota_carlogo.svg" alt="Toyota logo" class="card-logo mb-3">
+      <img *ngSwitchCase="'ford'" src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Ford_logo_flat.svg" alt="Ford logo" class="card-logo mb-3">
+      <img *ngSwitchCase="'honda'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/1996_Honda_Logo_01.jpg/800px-1996_Honda_Logo_01.jpg" alt="Honda logo" class="card-logo mb-3">
+      <img *ngSwitchCase="'renault'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Renault_2009_logo.svg/2048px-Renault_2009_logo.svg.png" alt="Renault logo" class="card-logo mb-3">
+      <img *ngSwitchCase="'hyundai'" src="https://www.salvatorepumo.it/wp-content/uploads/2023/10/logo-hyundai-oggi-3.jpg" alt="Hyundai logo" class="card-logo mb-3">
+      <img *ngSwitchCase="'nissan'" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw91ww7ZH3NfTyuHBsNSlFJglxsBE5PHQTfQ&s" alt="Nissan logo" class="card-logo mb-3">
+      <img *ngSwitchCase="'ferrari'" src="https://www.salvatorepumo.it/wp-content/uploads/2021/05/logo-ferrari-01.png" alt="Ferrari logo" class="card-logo mb-3">
+      <img *ngSwitchDefault src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg" alt="Default logo" class="card-logo mb-3">
+    </div>
+
+    <h5 class="card-title">{{ automobile.marca }} {{ automobile.modello }}</h5>
+    <p class="card-text">
+      <span class="fw-bold">Targa:</span> {{ automobile.targa }}<br>
+      <span class="fw-bold">Prezzo:</span> {{ automobile.prezzo | currency:'EUR' }}
+    </p>
+    <div *ngIf="isLoggedIn">
+      <button class="btn btn-outline-warning d-inline-flex align-items-center" type="button" (click)="navigateToEdit()">
+        <i class="bi bi-pencil me-1"></i>
+        <span>Modifica</span>
+      </button>
+      <button class="btn btn-outline-danger d-inline-flex align-items-center ms-2" type="button" (click)="elimina()">
+        <i class="bi bi-trash me-1"></i>
+        <span>Elimina</span>
+      </button>
+    </div>
+  </div>
+</div>

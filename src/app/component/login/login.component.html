@@ -1,0 +1,18 @@
+<div class="container-fluid contenitore">
+  <form class="form" [formGroup]="formLogin" (ngSubmit)="login()">
+    <p class="form-title">Benvenuto! Effettua l'accesso</p>
+    <div class="logo-container">
+      <img src="https://files.oaiusercontent.com/file-kW70rD1kR3wyPgaZMLjviK4f?se=2024-11-10T11%3A19%3A03Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D8e8151f1-87c7-4e9b-84a7-46957d2a2e93.webp&sig=oSgdavjVkafny4jS0pacSTmBo2i3JntQh3g4GX0YxAM%3D" alt="Logo" class="logo">
+    </div>
+    <div class="input-container">
+      <input type="email" placeholder="Inserisci email" formControlName="username">
+    </div>
+    <div class="input-container">
+      <input type="password" placeholder="Inserisci password" formControlName="password">
+    </div>
+
+    <small class="mb-3 text-danger" *ngIf="showError">Credenziali errate</small>
+
+    <button type="submit" class="submit">Accedi</button>
+  </form>
+</div>
