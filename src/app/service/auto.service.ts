@@ -16,18 +16,18 @@ export class AutoService {
   automobiliChanged = new Subject<void>();
 
   constructor(private http: HttpClient, private autenticazioneService : AutenticazioneService) { }
-
+  /*
   private getAuthHeaders(): HttpHeaders {
     const token = this.autenticazioneService.token;
     return new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-  }
+  }*/
 
 
   creaAutomobile(nuovaAutomobile: Omit<Auto, 'id'>): Observable<boolean> {
-    const headers = this.getAuthHeaders();
-    return this.http.post<Auto>('http://localhost:8080/automobile/nuova', nuovaAutomobile, {headers}).pipe(
+    //const headers = this.getAuthHeaders();
+    return this.http.post<Auto>('http://localhost:8080/automobile/nuova', nuovaAutomobile, /*{headers}*/).pipe(
       map(automobile  => true),
       catchError((err: HttpErrorResponse) => {
         console.log(err);
@@ -53,8 +53,8 @@ export class AutoService {
   }
 
   modificaAutomobile(automobile: Auto): Observable<boolean> {
-    const headers = this.getAuthHeaders();
-    return this.http.put<Auto>('http://localhost:8080/automobile/modifica', automobile, {headers}).pipe(
+    //const headers = this.getAuthHeaders();
+    return this.http.put<Auto>('http://localhost:8080/automobile/modifica', automobile, /*{headers}*/).pipe(
       map(automobile => true),
       catchError((err: HttpErrorResponse) => {
         console.log(err);
@@ -64,8 +64,8 @@ export class AutoService {
   }
 
   eliminaAutomobile(id: number): Observable<boolean> {
-    const headers = this.getAuthHeaders();
-    return this.http.delete('http://localhost:8080/automobile/elimina/' + id,{headers, responseType:'text'}).pipe(
+    //const headers = this.getAuthHeaders();
+    return this.http.delete('http://localhost:8080/automobile/elimina/' + id,{responseType:'text'}).pipe(
       switchMap(res => this.getAutomobili()),
       catchError((err: HttpErrorResponse) => {
         console.log(err);

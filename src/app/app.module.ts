@@ -9,8 +9,9 @@ import { LoginComponent } from './component/login/login.component';
 import { AddAutoComponent } from './component/add-auto/add-auto.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 import { AutoItemsComponent } from './component/auto-items/auto-items.component';
+import {AuthInterceptor} from "./auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,9 @@ import { AutoItemsComponent } from './component/auto-items/auto-items.component'
     HttpClientModule,
     NgForOf
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
