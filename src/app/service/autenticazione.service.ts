@@ -4,6 +4,7 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 //importo Router per effettuare il redirect
 import {Router} from "@angular/router";
 import {catchError, map, Observable, of} from "rxjs";
+import {jwtDecode} from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,8 @@ export class AutenticazioneService {
 
   //dichiaro il token come stringa per poterlo utilizzare in seguito
   token: string;
+  //dichiaro la variabile decodetoken per poter accedere ai dati del token
+   decodetoken: any;
 
   //metodo per effettuare il login
   login(username: string, password: string): Observable<boolean> {
@@ -20,6 +23,7 @@ export class AutenticazioneService {
       map(res => {
         this.token = res.headers.get('Authorization');
         localStorage.setItem('chiave', this.token);
+
         return true;
       }),
       catchError((err: HttpErrorResponse): Observable<boolean> => {
@@ -41,6 +45,9 @@ export class AutenticazioneService {
     this.token = localStorage.getItem('chiave');
   }
 
-
+  decodeToken() {
+    this.decodetoken = jwtDecode(this.token);
+    this.decodetoken= JSON.parse(this.decodetoken.sub)
+  }
 
 }

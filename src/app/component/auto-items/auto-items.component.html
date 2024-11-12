@@ -20,7 +20,7 @@
       <span class="fw-bold">Targa:</span> {{ automobile.targa }}<br>
       <span class="fw-bold">Prezzo:</span> {{ automobile.prezzo | currency:'EUR' }}
     </p>
-    <div *ngIf="isLoggedIn">
+    <div *ngIf="ruolo">
       <button class="btn btn-outline-warning d-inline-flex align-items-center" type="button" (click)="navigateToEdit()">
         <i class="bi bi-pencil me-1"></i>
         <span>Modifica</span>

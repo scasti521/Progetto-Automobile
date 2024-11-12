@@ -9,9 +9,10 @@
         <li class="nav-item">
           <a class="nav-link" aria-current="page" routerLink="/auto-list">Lista Auto</a>
         </li>
-        <li class="nav-item" *ngIf="isLoggedIn">
+        <li class="nav-item" *ngIf="ruolo">
           <a class="nav-link" routerLink="/add-auto">Nuova Auto</a>
         </li>
+
       </ul>
       <ul class="navbar-nav ms-auto align-content-center">
         <li class="nav-item" *ngIf="!isLoggedIn">

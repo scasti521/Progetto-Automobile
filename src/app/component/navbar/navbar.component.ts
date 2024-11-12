@@ -16,6 +16,11 @@ export class NavbarComponent {
     return !!this.authService.token;
   }
 
+  get ruolo(): boolean {
+    // Logica per determinare il ruolo dell'utente
+    return this.authService.decodetoken && this.authService.decodetoken.ruolo === 0;
+  }
+
   logout():void{
     this.authService.logout();
   }

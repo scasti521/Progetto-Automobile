@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         //se l'esito è positivo vado alla pagina di inserimento
         if(esito){
           this.router.navigateByUrl('/auto-list');
+          this.authService.decodeToken();
         } else {
           //altrimenti mostro un errore
           this.showError = true;

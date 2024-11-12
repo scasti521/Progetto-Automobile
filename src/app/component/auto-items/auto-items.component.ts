@@ -38,6 +38,12 @@ export class AutoItemsComponent {
     return !!this.authService.token;
   }
 
+  get ruolo(): boolean {
+    // Logica per determinare il ruolo dell'utente
+    return this.authService.decodetoken && this.authService.decodetoken.ruolo === 0;
+  }
+
+
   ngOnDestroy() {
     this.eliminaSub?.unsubscribe();
   }
