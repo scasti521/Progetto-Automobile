@@ -14,7 +14,7 @@ import {AutenticazioneService} from "../../service/autenticazione.service";
 export class AddAutoComponent implements OnInit {
   FormAuto: FormGroup;
   autoDaModificare: Auto;
-x
+
   salvaSub: Subscription;
 
   constructor(
@@ -25,10 +25,10 @@ x
   ngOnInit(): void {
     this.autoDaModificare = this.automobileService.automobileSelected;
     this.FormAuto = new FormGroup({
-      marca: new FormControl('', [Validators.required]),
-      modello: new FormControl('', [Validators.required]),
-      targa: new FormControl('', [Validators.required]),
-      prezzo: new FormControl('', [Validators.required]),
+      marca: new FormControl( this.autoDaModificare ? this.autoDaModificare.marca : '', [Validators.required]),
+      modello: new FormControl(this.autoDaModificare ? this.autoDaModificare.modello : '', [Validators.required]),
+      targa: new FormControl(this.autoDaModificare ? this.autoDaModificare.targa : '', [Validators.required]),
+      prezzo: new FormControl(this.autoDaModificare ? this.autoDaModificare.prezzo: '', [Validators.required]),
     });
   }
 
